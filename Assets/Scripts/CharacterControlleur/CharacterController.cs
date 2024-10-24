@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    public float moveSpeed = 5f;
     [SerializeField] private float speedIncreaseFactor = 0.01f;
     [SerializeField] private float maxSpeed = 20f;
 
 
-    private float[] lanes = { -2f, -1f, 0, 1f, 2f };
+    private float[] lanes = { -4f, -2f, 0, 2f, 4f };
     [SerializeField] private int currentLanes = 2;
 
     private void Update()
     {
+        Debug.Log(moveSpeed);
         transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
         moveSpeed = Mathf.Min(maxSpeed, moveSpeed + speedIncreaseFactor);
 
