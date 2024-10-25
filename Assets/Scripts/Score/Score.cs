@@ -7,17 +7,28 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
-    public CharacterController characterController;
-
+    [SerializeField] private int pointsPerSecond = 10;
     private float score = 0f;
-    private float pointsPerSecond = 10f;
-    private float speedMultiplier = 1f;
+    private float timeSinceLastUpdate = 0f;
+
 
     private void Update()
     {
-        speedMultiplier = characterController.moveSpeed;
-        score += pointsPerSecond * speedMultiplier * Time.deltaTime;
+      timeSinceLastUpdate += Time.deltaTime;
+
+        if(timeSinceLastUpdate >= 1f)
+        {
+            UpdateScore();
+            timeSinceLastUpdate = 0f;
+        }
+
         scoreText.text = "Score: " + Mathf.FloorToInt(score).ToString();
 
+    }
+
+    private void UpdateScore()
+    {
+        Debug.Log("Score Update");
+        score += pointsPerSecond;
     }
 }

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 937228560}
-  characterController: {fileID: 1946130376}
+  pointsPerSecond: 10
 --- !u!114 &31810850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,10 +807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d88a5fd2563ab4cbbfcff23aec017c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  speedIncreaseFactor: 0.001
-  maxSpeed: 20
-  currentLanes: 2
+  initialSpeed: 5
+  speedIncreaseFactor: 0.5
+  speedIncreaseInterval: 15
+  currentLane: 2
 --- !u!4 &1946130377
 Transform:
   m_ObjectHideFlags: 0
