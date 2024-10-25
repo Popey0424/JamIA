@@ -8,7 +8,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float speedIncreaseFactor = 0.5f;  
     [SerializeField] private float speedIncreaseInterval = 15f;  
 
-    private float moveSpeed;
+    public float moveSpeed;
     private float[] lanes = { -4f, -2f, 0f, 2f, 4f };  
     [SerializeField] private int currentLane = 2; 
     private float timeSinceLastIncrease = 0f;  

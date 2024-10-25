@@ -5,22 +5,31 @@ using UnityEngine;
 public class TrapsGenerator : MonoBehaviour
 {
     public GameObject[] traps;  
-    public Transform player;  
-    public float spawnInterval = 2f;  
+    public GameObject[] Bonus;
+    public Transform player;
+    public float SpawnBonusInterval = 10f;
+    public float spawnTrapInterval = 2f;  
     public float spawnDistance = 10f;  
 
     private float[] lanes = { -4f, -2f, 0f, 2f, 4f }; 
-    private float timeSinceLastSpawn = 0f; 
+    private float timeSinceLastTrapSpawn = 0f; 
+    private float timeSinceLastBonusSpawn = 0f; 
 
     void Update()
     {
-        timeSinceLastSpawn += Time.deltaTime;
+        timeSinceLastTrapSpawn += Time.deltaTime;
+        timeSinceLastBonusSpawn += Time.deltaTime;
 
         
-        if (timeSinceLastSpawn >= spawnInterval)
+        if (timeSinceLastTrapSpawn >= spawnTrapInterval)
         {
             SpawnTrap();
-            timeSinceLastSpawn = 0f; 
+            timeSinceLastTrapSpawn = 0f; 
+        }
+        if(timeSinceLastBonusSpawn >= SpawnBonusInterval)
+        {
+            SpawnBonus();
+            timeSinceLastBonusSpawn = 0f;
         }
     }
 
@@ -39,5 +48,21 @@ public class TrapsGenerator : MonoBehaviour
 
 
         Instantiate(selectedTrap, spawnPosition, Quaternion.identity);
+    }
+    void SpawnBonus()
+    {
+
+        int randomLaneIndex = Random.Range(0, lanes.Length);
+        float lanePosition = lanes[randomLaneIndex];
+
+
+        int randomBonusIndex = Random.Range(0, Bonus.Length);
+        GameObject selectedBonus = Bonus[randomBonusIndex];
+
+
+        Vector3 spawnPosition = new Vector3(lanePosition, player.position.y + spawnDistance, 0);
+
+
+        Instantiate(selectedBonus, spawnPosition, Quaternion.identity);
     }
 }

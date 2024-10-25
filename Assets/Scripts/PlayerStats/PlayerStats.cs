@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
+
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private int maxLives = 3;
-    [SerializeField] private int currentLives;
-    [SerializeField] private bool isInvicible = false;
+    public int maxLives = 3;
+    public int currentLives;
+    public bool isInvicible = false;
     [SerializeField] private float invicibilityDuration = 15f;
-
+    public HealthUI healthUI;
+    public CharacterController characterController;
+    [SerializeField] private Image imageFade;
 
 
     private void Start()
     {
         currentLives = maxLives;
+        healthUI.UpdateHearts();
     }
 
     public void TakeDamage()
@@ -21,7 +27,8 @@ public class PlayerStats : MonoBehaviour
         if (!isInvicible)
         {
             currentLives--;
-            if(currentLives <= 0)
+            healthUI.UpdateHearts();
+            if (currentLives <= 0)
             {
                 GameOver();
             }
@@ -33,6 +40,7 @@ public class PlayerStats : MonoBehaviour
         if(currentLives < maxLives)
         {
             currentLives++;
+            healthUI.UpdateHearts();
         }
     }
 
@@ -48,8 +56,11 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    private void GameOver()
+    public void GameOver()
     {
+        characterController.moveSpeed = 0;
+
+
         Debug.Log("GameOver");
     }
 }

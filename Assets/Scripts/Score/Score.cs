@@ -31,4 +31,10 @@ public class Score : MonoBehaviour
         Debug.Log("Score Update");
         score += pointsPerSecond;
     }
+
+    public void AddScore(int points)
+    {
+        score += points;
+        
+    }
 }
