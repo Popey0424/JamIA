@@ -15,6 +15,7 @@ public class CollisionEffects : MonoBehaviour
     public AudioSource HealingCollision;
     public AudioSource ScoreExplosion;
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Hole"))
@@ -73,6 +74,7 @@ public class CollisionEffects : MonoBehaviour
             
             Destroy(other.gameObject);
         }
+
         else if (other.CompareTag("Score"))
         {
             ScoreExplosion.Play();
