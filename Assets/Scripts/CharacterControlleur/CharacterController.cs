@@ -13,8 +13,11 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private int currentLane = 2; 
     private float timeSinceLastIncrease = 0f;  
 
+    public AudioSource audioSource;
+
     private void Start()
     {
+        audioSource.Play();
         moveSpeed = initialSpeed;  
     }
 

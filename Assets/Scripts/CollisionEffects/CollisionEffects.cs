@@ -9,6 +9,12 @@ public class CollisionEffects : MonoBehaviour
     public PlayerStats playerStats;
     public Score Score;
 
+    [Header("AudioSources")]
+    public AudioSource PlantHit;
+    public AudioSource WallHit;
+    public AudioSource HealingCollision;
+    public AudioSource ScoreExplosion;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Hole"))
@@ -20,6 +26,7 @@ public class CollisionEffects : MonoBehaviour
             }
             else
             {
+                PlantHit.Play();
                 Debug.Log("Hit par le Hole");
                 playerStats.TakeDamage();
                 playerStats.currentLives = 0;
@@ -30,10 +37,12 @@ public class CollisionEffects : MonoBehaviour
         {
             if (playerStats.isInvicible)
             {
+                WallHit.Play();
                 Score.AddScore(50);
             }
             else
             {
+                WallHit.Play();
                 Debug.Log("Hit par le Wall");
                 StartCoroutine(BlinkPlayer());
                 playerStats.TakeDamage();
@@ -47,10 +56,12 @@ public class CollisionEffects : MonoBehaviour
         {
             if(playerStats.currentLives < playerStats.maxLives)
             {
+                HealingCollision.Play();
                 playerStats.Heal();
             }
             else
             {
+                HealingCollision.Play();
                 Score.AddScore(100);
             }
             Destroy(other.gameObject);
@@ -64,6 +75,7 @@ public class CollisionEffects : MonoBehaviour
         }
         else if (other.CompareTag("Score"))
         {
+            ScoreExplosion.Play();
             Score.AddScore(500);
             Destroy(other.gameObject);
         }
