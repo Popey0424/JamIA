@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
     private float timeSinceLastIncrease = 0f;  
 
     public AudioSource audioSource;
+    public AudioSource ScratchPneu;
 
     private void Start()
     {
@@ -39,6 +40,7 @@ public class CharacterController : MonoBehaviour
  
         if (Input.GetKeyDown(KeyCode.LeftArrow) && currentLane > 0)
         {
+            ScratchPneu.Play();
             currentLane--;
             MoveToLane();
         }
@@ -46,6 +48,7 @@ public class CharacterController : MonoBehaviour
     
         if (Input.GetKeyDown(KeyCode.RightArrow) && currentLane < lanes.Length - 1)
         {
+            ScratchPneu.Play();
             currentLane++;
             MoveToLane();
         }
