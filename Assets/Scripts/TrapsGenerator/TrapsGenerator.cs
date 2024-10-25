@@ -7,11 +7,11 @@ public class TrapsGenerator : MonoBehaviour
     public GameObject[] traps;  
     public GameObject[] Bonus;
     public Transform player;
-    public float SpawnBonusInterval = 10f;
+    public float SpawnBonusInterval = 5f;
     public float spawnTrapInterval = 2f;  
     public float spawnDistance = 10f;  
 
-    private float[] lanes = { -4f, -2f, 0f, 2f, 4f }; 
+    public float[] lanes = { -4f, -2f, 0f, 2f, 4f }; 
     private float timeSinceLastTrapSpawn = 0f; 
     private float timeSinceLastBonusSpawn = 0f; 
 

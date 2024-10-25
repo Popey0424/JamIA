@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private int pointsPerSecond = 10;
-    private float score = 0f;
+    private int score = 0;
     private float timeSinceLastUpdate = 0f;
 
 
@@ -24,6 +24,11 @@ public class Score : MonoBehaviour
 
         scoreText.text = "Score: " + Mathf.FloorToInt(score).ToString();
 
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 
     private void UpdateScore()

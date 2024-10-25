@@ -53,10 +53,19 @@ public class CollisionEffects : MonoBehaviour
             {
                 Score.AddScore(100);
             }
+            Destroy(other.gameObject);
+
         }
         else if (other.CompareTag("Shield"))
         {
             playerStats.ActivateShield();
+            
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Score"))
+        {
+            Score.AddScore(500);
+            Destroy(other.gameObject);
         }
         
     }

@@ -9,6 +9,7 @@ TagManager:
   - HealKit
   - Hole
   - DestructibleWall
+  - Score
   layers:
   - Default
   - TransparentFX
