@@ -21,6 +21,22 @@ public class MainMenu : MonoBehaviour
         ImageFade.DOFade(1, 0.8f).OnComplete(LoadGame);
     }
 
+    public void OnCliCkCredits()
+    {
+        ImageFade.gameObject.SetActive(true);
+        ImageFade.DOFade(1, 0.8f).OnComplete(LoadCredits);
+    }
+
+    public void OnClickQuitGame()
+    {
+        Debug.Log("Jeu Quitter");
+        Application.Quit();
+    }
+
+    private void LoadCredits()
+    {
+        SceneManager.LoadScene("credit");
+    }
     private void LoadGame()
     {
         SceneManager.LoadScene("GameplayLouis");
