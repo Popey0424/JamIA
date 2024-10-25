@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1524f23acdd451d449b459a8aab47ff3
+guid: b54821ce99ce45140977895c9074e9c7
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Catch 22
+  - Nature
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
